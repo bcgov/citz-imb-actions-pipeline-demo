@@ -77,3 +77,7 @@ your container images.
 Feedback is on this CI/CD pipeline is encouraged. Please utilize the provided 
 Issue template to provide feedback to this repository and its maintainers.
 Hopefully we've made your life easier by the end of this!
+
+When you have finished testing this pipeline, please contact @akroon3r
+(adam.kroon@gov.bc.ca) to cleanup the Openshift namespaces that you've
+deployed into. Thanks!
