@@ -40,3 +40,40 @@ in Openshift by both a readiness and livesness probe attached to the API pod.
 A healthcheck in the CI/CD pipeline requires the readiness probe to return a
 healthy reponse (200) in order to proceed through various steps of the
 deployment process in the DEV, TEST and PROD environments in Openshift.
+
+# Docker 
+
+# Github Flow
+
+# Github Repository Setup
+
+# Github Environments - Setup and Configuration 
+
+# Openshift Service Accout Setup
+
+# Openshift Network Policy Setup 
+
+# Openshift Kubernetes Object Setup 
+
+# Tagging Strategy - Development Lifecycle
+
+# Tagging Strategy  - Operational Lifecycle 
+
+# Utilizing the Pipeline
+
+# FIN
+
+Congratulations. If you've gotten this far in the instructions provided, you
+have either skipped all the instructions or you've successfully integrated this
+pipeline into your forked Github repository and are (successfully!) deploying
+a Nodejs Express API to Openshift DEV, TEST and PROD namespaces.
+
+As previously stated, this pipeline should be completely agnostic to your
+project and the technologies you choose in order to develop any given
+application or applications in your architecture. The only requirement is that
+your project utilize Docker, Dockerfiles and a docker-compose file to build
+your container images.
+
+Feedback is on this CI/CD pipeline is encouraged. Please utilize the provided 
+Issue template to provide feedback to this repository and its maintainers.
+Hopefully we've made your life easier by the end of this!
