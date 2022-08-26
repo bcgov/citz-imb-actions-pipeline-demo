@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  #############################################################################################
+  ###                                  Nodejs Express API                                   ###
+  #############################################################################################
+  express-api:
+    container_name: express-api
+    build:
+      context: .
+      dockerfile: ./src/api/Dockerfile
+    networks:
+      - demo-network
+    ports:
+      - "3000:3000"
+
+networks:
+  demo-network: 
+    driver: "bridge"
