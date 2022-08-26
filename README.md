@@ -112,6 +112,11 @@ CI tasks like image building, running unit tests or code quality checks.
 
 ![branch-protection-policies-4](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/branch-protection-policies-4.PNG)
 
+Once these tasks are complete, your forked repository is ready to handle
+incoming changes to source code via pull request. Pull request submission to 
+your project repository is the first major event in the lifecycle of this CI/CD
+pipeline.
+
 # Github Environments - Setup and Configuration 
 
 # Openshift Service Accout Setup
