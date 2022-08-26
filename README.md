@@ -86,6 +86,16 @@ reduces repository overhead and maintainence.
 
 # Github Repository Setup
 
+In this section we will start by setting up your forked repository for 
+contributions by hypothetical team members via pull request.
+
+## Branch Protection Policies
+
+Start by entering repository settings (1), clicking on the branches tab (2) and
+then finally clicking the "Add Rule" button (3).
+
+![branch-protection-policies-1]()
+
 # Github Environments - Setup and Configuration 
 
 # Openshift Service Accout Setup
