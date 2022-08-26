@@ -24,8 +24,8 @@ success.
 
 # Assumptions
 
-1. The user will already have git installed on their local development machine
-2. The user will have Docker/Docker Desktop installed on their local development
+1. The user will already have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on their local development machine
+2. The user will have [Docker/Docker Desktop](https://docs.docker.com/get-docker/) installed on their local development
 machine in order to test the Dockerfile and docker-compose file before starting
 3. The user will have forked this repository before starting configuration of
 the CI/CD pipeline into BC Government Openshift
@@ -42,6 +42,29 @@ healthy reponse (200) in order to proceed through various steps of the
 deployment process in the DEV, TEST and PROD environments in Openshift.
 
 # Docker 
+
+The main dependency for the implementation of this pipeline into a given 
+project ecosystem is Docker. This project will utilze a [Dockerfile](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/src/api/Dockerfile) and
+a [docker-compose](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/docker-compose.yaml) file to build the container image of the Nodejs Express API.
+
+To test that the container image is being built correctly before starting this 
+tutorial, process to the root level of this respository in the CLI of your
+choice and enter the following:
+
+`docker-compose up --build express-api`
+
+You should see the following output in CLI:
+
+```
+Starting express-api ... done
+Attaching to express-api
+express-api    | Example app listening on port 3000
+```
+
+You then can open any internet browser of your choosing and go to 
+http://localhost:3000/api/v1/health and see the following message displayed:
+
+`I am suuuuuuuuuuuuuuuuuuuuuuuper healthy!`
 
 # Github Flow
 
