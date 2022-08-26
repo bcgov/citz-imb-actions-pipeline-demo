@@ -119,6 +119,24 @@ pipeline.
 
 # Github Environments - Setup and Configuration 
 
+Github Environments utilizes environment scoped environment variables for the
+environment stages we will be setting up later. First you will be setting up
+the *global scope* environment variables.
+
+| Variable Name                              | Value                                         | Notes                                                                 |
+|--------------------------------------------|-----------------------------------------------|-----------------------------------------------------------------------|
+| OPENSHIFT_[OBJECT]_PUBLIC_IMAGE_REPOSITORY | request from adam.kroon@gov.bc.ca             | replace [OBJECT] with "EXPRESS_API" for the purposes of this project  |
+| OPENSHIT_PUBLIC_IMAGE_REPOSITORY_BASE_URL  | request from adam.kroon@gov.bc.ca             | used to docker login to with service account credentials              |
+| OPENSHIFT_SERVER_URL                       | https://api.silver.devops.gov.bc.ca:6443      | used to login to openshift cluster                                    |
+| OPENSHIFT_TOOLS_SA_PASSWORD                | JWT value - request from adam.kroon@gov.bc.ca | service account password                                              |
+| OPENSHIFT_TOOLS_SA_USERNAME                | request from adam.kroon@gov.bc.ca             | service account username                                              |
+| OPENSHIFT_TOOLS_NAMESPACE                  | request from adam.kroon@gov.bc.ca             | license plate and environment (ex// ca94a8-tools)                     |
+
+To setup the global scope environment variables you will first click on the
+repository settings tab (1), then click on the secrets tab (2).
+
+![github-environments-1](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/github-environments-1.PNG)
+
 # Openshift Service Accout Setup
 
 # Openshift Network Policy Setup 
