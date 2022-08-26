@@ -96,6 +96,22 @@ then finally clicking the "Add Rule" button (3).
 
 ![branch-protection-policies-1](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/branch-protection-policies-1.PNG)
 
+First, you will start by creating the branch naming pattern:
+
+![branch-protection-policies-2](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/branch-protection-policies-2.PNG)
+
+Second, you will enforce pull requests to be opened before merging code to the 
+main branch, as well as requiring approvals from other team members that have 
+reviewed the incoming source code changes:
+
+![branch-protection-policies-3](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/branch-protection-policies-3.PNG)
+
+Finally, you will make sure you enable status checks to pass before merging 
+incoming source code changes to the main branch. This means things like basic
+CI tasks like image building, running unit tests or code quality checks.
+
+![branch-protection-policies-4](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/branch-protection-policies-4.PNG)
+
 # Github Environments - Setup and Configuration 
 
 # Openshift Service Accout Setup
