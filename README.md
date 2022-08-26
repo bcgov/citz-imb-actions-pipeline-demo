@@ -66,7 +66,23 @@ http://localhost:3000/api/v1/health and see the following message displayed:
 
 `I am suuuuuuuuuuuuuuuuuuuuuuuper healthy!`
 
+Your demo Nodejs Express API container is healthy and serving traffic on it's
+only endpoint!
+
 # Github Flow
+
+This CI/CD pipeline hinges around a specific development workflow: [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+
+Because Github Actions are heavily event driven, with the implementation of
+the Github Flow into your project, this pipeline will be heavily centered
+around the creation of a new commit hash on the repository main branch when a 
+pull request has passed it's CI jobs, been peer reviewed, approved and finally
+merged to the main branch of the project source code.
+
+If you don't have experience with implementing Github Flow in any of your
+previous projects, please take the time to review the documentation provided
+by Github (link above). This workflow is extremely lightweight, orangized and
+reduces repository overhead and maintainence.
 
 # Github Repository Setup
 
