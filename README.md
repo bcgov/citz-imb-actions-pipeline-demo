@@ -94,7 +94,7 @@ contributions by hypothetical team members via pull request.
 Start by entering repository settings (1), clicking on the branches tab (2) and
 then finally clicking the "Add Rule" button (3).
 
-![branch-protection-policies-1]()
+![branch-protection-policies-1](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/branch-protection-policies-1.PNG)
 
 # Github Environments - Setup and Configuration 
 
