@@ -319,6 +319,33 @@ The next page should look something similar to this:
 You are now ready to build, tag and push your Docker image into the Openshift
 image repository.
 
+# Docker and Docker Compose
+
+This CI/CD pipeline utilizes both a Dockerfile and a Docker Compose file to
+build the example Express API image in used in this tutorial. Please make
+you review both files before testing to understand how the image is built.
+
+# Testing the Build/Tag/Push Github Action Stage
+
+In the .github/workflows directory on this repository, you will find the
+following file:
+
+`build-tag-push-deploy-express-api.yaml`
+
+This file in it's entirety is used to push a specific feature and/or change in
+the source code from your Openshift DEV environment, through TEST and finally 
+into PROD. Before you test the entire pipeline, you should first ensure that 
+the docker container image is correctly built and pushed into the imagestream 
+that you created in the previous step. You will notice that lines 80 to 557 are 
+commented out for this specific purpose.
+
+*! IMPORTANT !* Please note that line 68 of the yaml file being used may have
+to change based on the name of your forked repository.
+
+*Current value*: docker tag citz-imb-actions-pipeline-demo_express-api
+
+*Your value*: docker tag [YOUR_REPOSITORY_NAME]_express-api
+
 # Openshift Kubernetes Object Setup 
 
 # Tagging Strategy - Development Lifecycle
