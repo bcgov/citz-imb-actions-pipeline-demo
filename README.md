@@ -234,12 +234,90 @@ and PROD namespaces respectfully.
 
 ![openshift-service-account-8](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/openshift-service-account-8.PNG)
 
+The remainder of the Github Environment variables that need to be set up can be found in the following table:
+
+| Variable Name                              | Value                                           | Notes                                                                 |
+|--------------------------------------------|-------------------------------------------------|-----------------------------------------------------------------------|
+| APPLICATION_NAME                           | Name of your target application                 | example: dpia-api                                                     |
+| ENVIRONMENT                                | dev/test/prod                                   | case sensitive                                                        |
+| LICENSE_PLATE                              | randomized 6 character hash of your namespaces  | example: ec1236                                                       |
+| OPENSHIFT_[ENVIRONMENT]_NAMESPACE          | LICENSE_PLATE+ENVIRONMENT                       | example: ec1236-dev  ALSO replace [ENVIRONMENT] with DEV/TEST/PROD in variable name |
+| GLOBAL_USER_EMAIL                          | email address of github user                    | this is used as a part of repo config within the actions script       |
+| GLOBAL_USER_NAME                           | name of github user                             | this is used as a part of repo config within the actions script       |
+
 Congratulations! You should have successfully created access for your service
 account to access the BC Government Openshift cluster namespaces for your
 project, as well as your first Github Actions and Github Environments 
 environment variables.
 
 # Openshift Network Policy Setup 
+
+In order for your service account to login and connect with your project
+namespaces within the BC Government Openshift cluster, you will next need to
+configure baseline network policies that management traffic into your 
+namespaces from the public external internet, as well as policies that manage
+network traffic between your namespaces as well as between services within your
+namespaces.
+
+*! IMPORTANT !* These network policies by default are set to be wide open. A 
+typical project will then pair back their network policies to allow the traffic
+communications required for their project to work and deny all other network
+communications. This tutorial will not cover the pairing back of policy
+permissions.
+
+To create the required network policy objects in the TOOLS, DEV, TEST and PROD 
+namespaces, run the following commands after you have navigated to the 
+`openshift/templates/network-policies/` directory in this repository:
+
+`oc process -f .\any-to-any.yaml -p ENVIRONMENT=[ENVIRONMENT] LICENSE_PLATE=[LICENSE_PLATE] | oc apply -f -`
+
+`oc process -f .\any-to-external.yaml -p ENVIRONMENT=[ENVIRONMENT] LICENSE_PLATE=e[LICENSE_PLATE] | oc apply -f -`
+
+`oc process -f .\allow-from-openshift.yaml -p ENVIRONMENT=[ENVIRONMENT] -p LICENSE_PLATE=[LICENSE_PLATE] | oc apply -f -`
+
+Remember to replace `[ENVIRONMENT]` with a value of tools, dev, test or prod
+and `[LICENSE_PLATE]` with your namespaces randomized 6 character hash.
+
+To see the network policies that were successfully created, toggle developer
+mode on in the Openshift webapp GUI, then click on the *Search* tab on the left
+side of the page. Under the *Resources* dropdown, type "network" into the
+search bar. You should see an object with a blue NP icon called *Network Policy*.
+Select this option.
+
+![openshift-network-policy-setup-1](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/openshift-network-policy-setup-1.PNG)
+
+# Imagestream Setup 
+
+The initial stage on the Github Environments Actions is a build-tag-push stage.
+In order to do so, we need somewhere to put the image that is built as result 
+of this phase. The Kubernetes imagestream object is what we need to setup first
+in order to accomplish this.
+
+Toggle the Openshift webapp to Administrator mode, and then click on *Builds*.
+From the dropdown that appears under Builds, select *Imagestreams*.
+
+![imagestream-setup-1](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/imagestream-setup-1.PNG)
+
+Next, you will want to create an imagestream for your image. Do this by
+clicking on the blue *Create Imagestream* button in the top right corner of the
+page.
+
+![imagestream-setup-2](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/imagestream-setup-2.PNG)
+
+You'll see the inline yaml editor that comes with Openshift on the next page.
+This object only requires a name and no other metadata. Simply replace the 
+"example" value found in the name field with the name of the application image
+you're looking to build and store. When you've changed the value, click the
+blue *Create* button found at the bottom of the text form.
+
+![imagestream-setup-3](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/imagestream-setup-3.PNG)
+
+The next page should look something similar to this:
+
+![imagestream-setup-4](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/imagestream-setup-4.PNG)
+
+You are now ready to build, tag and push your Docker image into the Openshift
+image repository.
 
 # Openshift Kubernetes Object Setup 
 

@@ -1,0 +1,35 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: github-actions-rolebinding-template
+labels:
+  template: github-actions-rolebinding-template
+objects:
+- kind: NetworkPolicy
+  apiVersion: networking.k8s.io/v1
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: >
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"labels":{"template":"platform-registry"},"name":"any-to-external","namespace":"d63404-tools"},"spec":{"description":"Allow
+        all pods to talk to external
+        systems\n","destination":[["ext:network=any"]],"source":[["$namespace=d63404-tools"]]}}
+    name: any-to-external
+    namespace: ${LICENSE_PLATE}-${ENVIRONMENT}
+    labels:
+      template: platform-registry
+  spec:
+    podSelector: {}
+    policyTypes:
+      - Ingress
+
+parameters:
+  - description: Environment
+    displayName: Environment
+    name: ENVIRONMENT
+    required: true
+    value: tools
+  - description: License Plate 
+    displayName: License Plate 
+    name: LICENSE_PLATE 
+    required: true
+    value: ec1236
