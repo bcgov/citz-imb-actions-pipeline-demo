@@ -133,11 +133,16 @@ the *global scope* environment variables.
 | OPENSHIFT_TOOLS_NAMESPACE                  | request from adam.kroon@gov.bc.ca             | license plate and environment (ex// ca94a8-tools)                     |
 
 To setup the global scope environment variables you will first click on the
-repository settings tab (1), then click on the secrets tab (2).
+repository settings tab (1), then click on the secrets tab (2), and then click 
+"actions" from dropdown under the secrets tab.
 
 ![github-environments-1](https://github.com/bcgov/citz-imb-actions-pipeline-demo/blob/main/assets/images/github-environments-1.PNG)
 
+Next click 
+
 # Openshift Service Accout Setup
+
+In order for your Github Actions/Environments to access specific namespaces
 
 # Openshift Network Policy Setup 
 
@@ -152,9 +157,10 @@ repository settings tab (1), then click on the secrets tab (2).
 # FIN
 
 Congratulations. If you've gotten this far in the instructions provided, you
-have either skipped all the instructions or you've successfully integrated this
-pipeline into your forked Github repository and are (successfully!) deploying
-a Nodejs Express API to Openshift DEV, TEST and PROD namespaces.
+have either skipped all the instructions to find out how the story ends, or 
+you've successfully integrated this pipeline into your forked Github repository
+and are (successfully!) deploying a Nodejs Express API to Openshift DEV, TEST 
+and PROD namespaces.
 
 As previously stated, this pipeline should be completely agnostic to your
 project and the technologies you choose in order to develop any given
