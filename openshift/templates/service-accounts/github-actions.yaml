@@ -1,8 +1,15 @@
-kind: ServiceAccount
-apiVersion: v1
+apiVersion: template.openshift.io/v1
+kind: Template
 metadata:
-  name: github-actions
-  namespace: ${LICENSE_PLATE}-${ENVIRONMENT}
+  name: github-actions-sa-template
+labels:
+  template: github-actions-sa-template
+objects:
+- kind: ServiceAccount
+  apiVersion: v1
+  metadata:
+    name: github-actions
+    namespace: ${LICENSE_PLATE}-${ENVIRONMENT}
 
 parameters:
   - description: Environment
@@ -14,4 +21,4 @@ parameters:
     displayName: License Plate
     name: LICENSE_PLATE
     required: true
-    value: b996e6
+    value: ec1236
