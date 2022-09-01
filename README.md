@@ -211,7 +211,9 @@ so you can next configure this value as a secret into Github.
  the ENVIRONMENT value with DEV, TEST and PROD separately.
 
 `oc process -f github-actions.yaml -p ENVIRONMENT=DEV -p LICENSE_PLATE=[LICENSE_PLATE] | oc apply -f -`
+
 `oc process -f github-actions.yaml -p ENVIRONMENT=TEST -p LICENSE_PLATE=[LICENSE_PLATE] | oc apply -f -`
+
 `oc process -f github-actions.yaml -p ENVIRONMENT=PROD -p LICENSE_PLATE=[LICENSE_PLATE] | oc apply -f -`
 
 To set your first username/password values for the DEV environment, you will
